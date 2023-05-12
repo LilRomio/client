@@ -9,6 +9,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { shades } from '../../theme';
 import { setIsCartOpen } from '../../state';
+import Logo from './Logo';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -35,13 +36,8 @@ const Navbar = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Box
-          onClick={() => navigate('/')}
-          sx={{ '&:hover': { cursor: 'pointer' } }}
-          color={shades.secondary[500]}
-        >
-          Da HipHop Shop
-        </Box>
+        <Logo />
+
         <Box
           display="flex"
           justifyContent="space-between"
