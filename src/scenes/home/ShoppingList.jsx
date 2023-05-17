@@ -31,14 +31,11 @@ const ShoppingList = () => {
     getItems();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const topRatedItems = items.filter(
-    (item) => item.attributes.category === 'topRated'
+  const vinylItems = items.filter(
+    (item) => item.attributes.category === 'vinyl'
   );
-  const newArrivalsItems = items.filter(
-    (item) => item.attributes.category === 'newArrivals'
-  );
-  const bestSellersItems = items.filter(
-    (item) => item.attributes.category === 'bestSellers'
+  const clothesItems = items.filter(
+    (item) => item.attributes.category === 'clothes'
   );
 
   return (
@@ -61,9 +58,8 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        <Tab label="NEW ARRIVALS" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestSellers" />
-        <Tab label="TOP RATED" value="topRated" />
+        <Tab label="Vinyl" value="vinyl" />
+        <Tab label="Apparel" value="clothes" />
       </Tabs>
       <Box
         margin="0 auto"
@@ -77,18 +73,15 @@ const ShoppingList = () => {
           items.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === 'newArrivals' &&
-          newArrivalsItems.map((item) => (
+        {value === 'vinyl' &&
+          vinylItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === 'bestSellers' &&
-          bestSellersItems.map((item) => (
+        {value === 'clothes' &&
+          clothesItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === 'topRated' &&
-          topRatedItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
+        ))
       </Box>
     </Box>
   );

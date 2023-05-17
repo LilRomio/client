@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IconButton, Box, Typography, useTheme, Button } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { Box, Typography, useTheme, Button } from '@mui/material';
+// import AddIcon from '@mui/icons-material/Add';
+// import RemoveIcon from '@mui/icons-material/Remove';
 import { shades } from '../theme';
 import { addToCart } from '../state';
 import { useNavigate } from 'react-router-dom';
@@ -10,13 +10,13 @@ import { useNavigate } from 'react-router-dom';
 const Item = ({ item, width }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const {
     palette: { neutral },
   } = useTheme();
 
-  const { category, price, name, image } = item.attributes;
+  const { category, price, artist, name, image } = item.attributes;
   const {
     data: {
       attributes: {
@@ -51,7 +51,7 @@ const Item = ({ item, width }) => {
           padding="0 5%"
         >
           <Box display="flex" justifyContent="space-between">
-            <Box
+            {/* <Box
               display="flex"
               alignItems="center"
               backgroundColor={shades.neutral[100]}
@@ -64,10 +64,10 @@ const Item = ({ item, width }) => {
               <IconButton onClick={() => setCount(count + 1)}>
                 <AddIcon />
               </IconButton>
-            </Box>
+            </Box> */}
             <Button
               onClick={() => {
-                dispatch(addToCart({ item: { ...item, count } }));
+                dispatch(addToCart({ item: { ...item } }));
               }}
               sx={{ backgroundColor: shades.primary[300], color: 'white' }}
             >
@@ -77,15 +77,16 @@ const Item = ({ item, width }) => {
         </Box>
       </Box>
 
-      {/* <Box mt="3px">
+      <Box mt="3px">
         <Typography variant="subtitle2" color={neutral.dark}>
           {category
             .replace(/([A-Z])/g, ' $1')
             .replace(/^./, (str) => str.toUpperCase())}
         </Typography>
         <Typography>{name}</Typography>
-        <Typography fontWeight="bold">${price}</Typography>
-      </Box> */}
+        <Typography fontWeight="bold">{artist}</Typography>
+        <Typography fontWeight="bold">&#163;{price}</Typography>
+      </Box>
     </Box>
   );
 };

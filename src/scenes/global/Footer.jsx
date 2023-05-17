@@ -1,7 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { Box, Typography } from '@mui/material';
 import { shades } from '../../theme';
-import Logo from './Logo';
 
 function Footer() {
   const {
@@ -19,7 +18,14 @@ function Footer() {
         columnGap="clamp(20px, 30px, 40px)"
       >
         <Box width="clamp(20%, 30%, 40%)">
-          <Logo />
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            mb="30px"
+            color={shades.neutral[700]}
+          >
+            Da HipHop Shop
+          </Typography>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
